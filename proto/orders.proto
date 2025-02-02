@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "coin"; 
+
+message Order {
+  string id = 1;
+  string text = 2;
+  string amend_text = 3;
+  int64 create_time = 4;
+  int64 update_time = 5;
+  int64 create_time_ms = 6;
+  int64 update_time_ms = 7;
+  string status = 8;
+  string currency_pair = 9;
+  string type = 10;
+  string account = 11;
+  string side = 12;
+  string amount = 13;
+  string price = 14;
+  string time_in_force = 15;
+  string iceberg = 16;
+  string left = 17;
+  string filled_amount = 18;
+  string fill_price = 19;
+  string filled_total = 20;
+  string avg_deal_price = 21;
+  string fee = 22;
+  string fee_currency = 23;
+  string point_fee = 24;
+  string gt_fee = 25;
+  string gt_maker_fee = 26;
+  string gt_taker_fee = 27;
+  bool gt_discount = 28;
+  string rebated_fee = 29;
+  string rebated_fee_currency = 30;
+  string finish_as = 31;
+}
