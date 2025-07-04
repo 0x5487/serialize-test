@@ -25,7 +25,7 @@ func (z *Order) DecodeMsg(dc *msgp.Reader) (err error) {
 		}
 		switch msgp.UnsafeString(field) {
 		case "id":
-			z.Id, err = dc.ReadString()
+			z.ID, err = dc.ReadString()
 			if err != nil {
 				err = msgp.WrapError(err, "Id")
 				return
@@ -229,7 +229,7 @@ func (z *Order) EncodeMsg(en *msgp.Writer) (err error) {
 	if err != nil {
 		return
 	}
-	err = en.WriteString(z.Id)
+	err = en.WriteString(z.ID)
 	if err != nil {
 		err = msgp.WrapError(err, "Id")
 		return
@@ -543,7 +543,7 @@ func (z *Order) MarshalMsg(b []byte) (o []byte, err error) {
 	// map header, size 31
 	// string "id"
 	o = append(o, 0xde, 0x0, 0x1f, 0xa2, 0x69, 0x64)
-	o = msgp.AppendString(o, z.Id)
+	o = msgp.AppendString(o, z.ID)
 	// string "text"
 	o = append(o, 0xa4, 0x74, 0x65, 0x78, 0x74)
 	o = msgp.AppendString(o, z.Text)
@@ -656,7 +656,7 @@ func (z *Order) UnmarshalMsg(bts []byte) (o []byte, err error) {
 		}
 		switch msgp.UnsafeString(field) {
 		case "id":
-			z.Id, bts, err = msgp.ReadStringBytes(bts)
+			z.ID, bts, err = msgp.ReadStringBytes(bts)
 			if err != nil {
 				err = msgp.WrapError(err, "Id")
 				return
@@ -855,6 +855,6 @@ func (z *Order) UnmarshalMsg(bts []byte) (o []byte, err error) {
 
 // Msgsize returns an upper bound estimate of the number of bytes occupied by the serialized message
 func (z *Order) Msgsize() (s int) {
-	s = 3 + 3 + msgp.StringPrefixSize + len(z.Id) + 5 + msgp.StringPrefixSize + len(z.Text) + 11 + msgp.StringPrefixSize + len(z.AmendText) + 12 + msgp.Int64Size + 12 + msgp.Int64Size + 15 + msgp.Int64Size + 15 + msgp.Int64Size + 7 + msgp.StringPrefixSize + len(z.Status) + 14 + msgp.StringPrefixSize + len(z.CurrencyPair) + 5 + msgp.StringPrefixSize + len(z.Type) + 8 + msgp.StringPrefixSize + len(z.Account) + 5 + msgp.StringPrefixSize + len(z.Side) + 7 + msgp.StringPrefixSize + len(z.Amount) + 6 + msgp.StringPrefixSize + len(z.Price) + 14 + msgp.StringPrefixSize + len(z.TimeInForce) + 8 + msgp.StringPrefixSize + len(z.Iceberg) + 5 + msgp.StringPrefixSize + len(z.Left) + 14 + msgp.StringPrefixSize + len(z.FilledAmount) + 11 + msgp.StringPrefixSize + len(z.FillPrice) + 13 + msgp.StringPrefixSize + len(z.FilledTotal) + 15 + msgp.StringPrefixSize + len(z.AvgDealPrice) + 4 + msgp.StringPrefixSize + len(z.Fee) + 13 + msgp.StringPrefixSize + len(z.FeeCurrency) + 10 + msgp.StringPrefixSize + len(z.PointFee) + 7 + msgp.StringPrefixSize + len(z.GtFee) + 13 + msgp.StringPrefixSize + len(z.GtMakerFee) + 13 + msgp.StringPrefixSize + len(z.GtTakerFee) + 12 + msgp.BoolSize + 12 + msgp.StringPrefixSize + len(z.RebatedFee) + 21 + msgp.StringPrefixSize + len(z.RebatedFeeCurrency) + 10 + msgp.StringPrefixSize + len(z.FinishAs)
+	s = 3 + 3 + msgp.StringPrefixSize + len(z.ID) + 5 + msgp.StringPrefixSize + len(z.Text) + 11 + msgp.StringPrefixSize + len(z.AmendText) + 12 + msgp.Int64Size + 12 + msgp.Int64Size + 15 + msgp.Int64Size + 15 + msgp.Int64Size + 7 + msgp.StringPrefixSize + len(z.Status) + 14 + msgp.StringPrefixSize + len(z.CurrencyPair) + 5 + msgp.StringPrefixSize + len(z.Type) + 8 + msgp.StringPrefixSize + len(z.Account) + 5 + msgp.StringPrefixSize + len(z.Side) + 7 + msgp.StringPrefixSize + len(z.Amount) + 6 + msgp.StringPrefixSize + len(z.Price) + 14 + msgp.StringPrefixSize + len(z.TimeInForce) + 8 + msgp.StringPrefixSize + len(z.Iceberg) + 5 + msgp.StringPrefixSize + len(z.Left) + 14 + msgp.StringPrefixSize + len(z.FilledAmount) + 11 + msgp.StringPrefixSize + len(z.FillPrice) + 13 + msgp.StringPrefixSize + len(z.FilledTotal) + 15 + msgp.StringPrefixSize + len(z.AvgDealPrice) + 4 + msgp.StringPrefixSize + len(z.Fee) + 13 + msgp.StringPrefixSize + len(z.FeeCurrency) + 10 + msgp.StringPrefixSize + len(z.PointFee) + 7 + msgp.StringPrefixSize + len(z.GtFee) + 13 + msgp.StringPrefixSize + len(z.GtMakerFee) + 13 + msgp.StringPrefixSize + len(z.GtTakerFee) + 12 + msgp.BoolSize + 12 + msgp.StringPrefixSize + len(z.RebatedFee) + 21 + msgp.StringPrefixSize + len(z.RebatedFeeCurrency) + 10 + msgp.StringPrefixSize + len(z.FinishAs)
 	return
 }
