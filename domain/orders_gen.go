@@ -27,7 +27,7 @@ func (z *Order) DecodeMsg(dc *msgp.Reader) (err error) {
 		case "id":
 			z.ID, err = dc.ReadString()
 			if err != nil {
-				err = msgp.WrapError(err, "Id")
+				err = msgp.WrapError(err, "ID")
 				return
 			}
 		case "text":
@@ -231,7 +231,7 @@ func (z *Order) EncodeMsg(en *msgp.Writer) (err error) {
 	}
 	err = en.WriteString(z.ID)
 	if err != nil {
-		err = msgp.WrapError(err, "Id")
+		err = msgp.WrapError(err, "ID")
 		return
 	}
 	// write "text"
@@ -658,7 +658,7 @@ func (z *Order) UnmarshalMsg(bts []byte) (o []byte, err error) {
 		case "id":
 			z.ID, bts, err = msgp.ReadStringBytes(bts)
 			if err != nil {
-				err = msgp.WrapError(err, "Id")
+				err = msgp.WrapError(err, "ID")
 				return
 			}
 		case "text":

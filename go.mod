@@ -5,7 +5,7 @@ go 1.24
 require (
 	github.com/cloudwego/frugal v0.2.6
 	github.com/cloudwego/prutal v0.1.2
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 	github.com/tinylib/msgp v1.3.0
 	google.golang.org/protobuf v1.36.6
 )

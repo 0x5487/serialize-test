@@ -121,6 +121,37 @@ func createOrder() *domain.Order {
 	}
 }
 
+func TestFrugal(t *testing.T) {
+	order := createOrder()
+	buf := make([]byte, frugal.EncodedSize(order))
+	_, err := frugal.EncodeObject(buf, nil, order)
+	assert.NoError(t, err)
+
+	newOrder := &domain.Order{}
+	_, err = frugal.DecodeObject(buf, newOrder)
+	assert.NoError(t, err)
+	assert.Equal(t, order.ID, newOrder.ID)
+}
+
+func TestMsgp(t *testing.T) {
+	order := createOrder()
+
+	bs := []byte{}
+	var err error
+	bs, err = order.MarshalMsg(bs)
+	if err != nil {
+		t.Fatalf("序列化失敗: %v", err)
+	}
+
+	newOrder := &domain.Order{}
+	_, err = newOrder.UnmarshalMsg(bs)
+	if err != nil {
+		t.Fatalf("反序列化失敗: %v", err)
+	}
+
+	assert.Equal(t, order.ID, newOrder.ID)
+}
+
 // 測試 Protobuf 序列化效能
 func BenchmarkProtobufSerialize(b *testing.B) {
 	order := createProtobufOrder()
@@ -238,16 +269,4 @@ func BenchmarkFrugalDeserialize(b *testing.B) {
 		newOrder := &domain.Order{}
 		_, _ = frugal.DecodeObject(buf, newOrder)
 	}
-}
-
-func TestFrugal(t *testing.T) {
-	order := createOrder()
-	buf := make([]byte, frugal.EncodedSize(order))
-	_, err := frugal.EncodeObject(buf, nil, order)
-	assert.NoError(t, err)
-
-	newOrder := &domain.Order{}
-	_, err = frugal.DecodeObject(buf, newOrder)
-	assert.NoError(t, err)
-	assert.Equal(t, order.ID, newOrder.ID)
 }
