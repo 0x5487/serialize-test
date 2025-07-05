@@ -5,10 +5,6 @@ type Order struct {
 	ID                 string `msg:"id" frugal:"1,required"`
 	Text               string `msg:"text" frugal:"2,required"`
 	AmendText          string `msg:"amend_text" frugal:"3,required"`
-	CreateTime         int64  `msg:"create_time" frugal:"4,required"`
-	UpdateTime         int64  `msg:"update_time" frugal:"5,required"`
-	CreateTimeMs       int64  `msg:"create_time_ms" frugal:"6,required"`
-	UpdateTimeMs       int64  `msg:"update_time_ms" frugal:"7,required"`
 	Status             string `msg:"status" frugal:"8,required"`
 	CurrencyPair       string `msg:"currency_pair" frugal:"9,required"`
 	Type               string `msg:"type" frugal:"10,required"`
@@ -29,8 +25,12 @@ type Order struct {
 	GtFee              string `msg:"gt_fee" frugal:"25,required"`
 	GtMakerFee         string `msg:"gt_maker_fee" frugal:"26,required"`
 	GtTakerFee         string `msg:"gt_taker_fee" frugal:"27,required"`
-	GtDiscount         bool   `msg:"gt_discount" frugal:"28,required"`
 	RebatedFee         string `msg:"rebated_fee" frugal:"29,required"`
 	RebatedFeeCurrency string `msg:"rebated_fee_currency" frugal:"30,required"`
 	FinishAs           string `msg:"finish_as" frugal:"31,required"`
+	CreateTime         int64  `msg:"create_time" frugal:"4,required"`
+	UpdateTime         int64  `msg:"update_time" frugal:"5,required"`
+	CreateTimeMs       int64  `msg:"create_time_ms" frugal:"6,required"`
+	UpdateTimeMs       int64  `msg:"update_time_ms" frugal:"7,required"`
+	GtDiscount         bool   `msg:"gt_discount" frugal:"28,required"`
 }

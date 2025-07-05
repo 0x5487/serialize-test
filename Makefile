@@ -8,3 +8,7 @@ generate:
 
 benchmark:
 	go test -benchmem -run=^$ -coverprofile=/tmp/vscode-godtJXfF/go-code-cover -bench . mykitex
+
+
+align: 
+	go tool betteralign -apply ./...
